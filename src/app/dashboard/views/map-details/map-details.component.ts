@@ -157,12 +157,13 @@ export class MapDetailsComponent implements OnInit, OnChanges {
 
   // Filter doctors by division
   filterByDivision(division: string): void {
+    console.log('from filter',division)
     this.selectedDivision = division;
     if (division === 'All') {
       this.filteredDoctorData = [...this.doctorData];
     } else {
       this.filteredDoctorData = this.doctorData.filter(
-        (doctor) => doctor.divisionName === division,
+        (doctor) => doctor.divisionName.toLowerCase() === division.toLowerCase(),
       );
     }
   }
